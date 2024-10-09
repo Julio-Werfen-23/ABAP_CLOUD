@@ -1,0 +1,6 @@
+@EndUserText.label: 'Travel - Service Definition'
+define service ZJAS_SD_TRAVEL {
+  expose ZJAS_C_TRAVEL  as Travels;
+  expose ZJAS_C_BOOKING as Bookings;
+  expose ZJAS_C_BKSUPPL as Supplements;
+}

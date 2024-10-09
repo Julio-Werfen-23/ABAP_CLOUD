@@ -10,7 +10,7 @@
 define view entity ZJAS_R_BKSUPPL
   as select from zjas_bksuppl
   association        to parent ZJAS_R_BOOKING as _Booking        on $projection.BookingUUID = _Booking.BookingUUID
-  association [1..1] to zw_r_travel_i         as _Travel         on $projection.TravelUUID = _Travel.TravelUUID
+  association [1..1] to ZJAS_R_TRAVEL         as _Travel         on $projection.TravelUUID = _Travel.TravelUUID
 
   association [1..1] to /DMO/I_Supplement     as _Product        on $projection.SupplementID = _Product.SupplementID
   association [1..*] to /DMO/I_SupplementText as _SupplementText on $projection.SupplementID = _SupplementText.SupplementID

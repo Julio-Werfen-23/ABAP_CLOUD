@@ -1,0 +1,91 @@
+@Metadata.layer: #CORE
+@UI: {headerInfo: {
+        typeName: 'Booking',
+        typeNamePlural: 'Bookings',
+    //    imageUrl: 'Imagen',
+        title: {
+            type: #STANDARD,
+            value: 'BookingID'
+        }}
+    }
+annotate entity ZJAS_C_BOOKING with
+{
+  @UI: {
+      facet : [
+               { id: 'Booking',
+                 purpose: #STANDARD,
+                 label : 'Booking',
+                 type: #IDENTIFICATION_REFERENCE,
+                 position: 10},
+
+                { id: 'Supplements',
+                  purpose: #STANDARD,
+                  parentId: 'Booking',
+                  label : 'Booking Supplement',
+                  type: #LINEITEM_REFERENCE,
+                  targetElement: '_BookingSupplement',
+                  position: 20}
+              ]
+  }
+
+  @UI.hidden: true
+  BookingUUID;
+  @UI.hidden: true
+  TravelUUID;
+  
+  @UI: { lineItem: [{ position: 10,
+                      importance: #HIGH }],
+         identification: [{ position: 10,
+                            label: 'Booking ID' }]
+   }
+  BookingID;
+  
+  @UI: { lineItem: [{ position: 20,
+                      importance: #HIGH }],
+         identification: [{ position: 20,
+                            label: 'Booking Date' }]
+  }
+  BookingDate;
+  
+    @UI: { lineItem: [{ position: 30,
+                        importance: #HIGH }],
+           identification: [{ position: 30,
+                              label: 'Customer ID' }]
+  }
+  CustomerID;
+  
+    @UI: { lineItem: [{ position: 40,
+                        importance: #HIGH }],
+           identification: [{ position: 40,
+                              label: 'Airline ID' }]
+  }
+  AirlineID;
+  
+    @UI: { lineItem: [{ position: 50,
+                        importance: #HIGH }],
+           identification: [{ position: 50,
+                            label: 'Connection ID' }]
+  }
+  ConnectionID;
+  
+    @UI: { lineItem: [{ position: 60,
+                        importance: #HIGH }],
+           identification: [{ position: 60,
+                              label: 'Flight Date' }]
+  }
+  FlightDate;
+  
+    @UI: { lineItem: [{ position: 70,
+                        importance: #HIGH }],
+           identification: [{ position: 70,
+                              label: 'Flight Price' }]
+  }
+  FlightPrice;
+  
+    @UI: { lineItem: [{ position: 80,
+                        importance: #HIGH }],
+           identification: [{ position: 80,
+                              label: 'Booking Status' }]
+  }
+  BookingStatus;
+}

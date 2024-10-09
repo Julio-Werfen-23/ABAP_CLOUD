@@ -19,12 +19,12 @@ define root view entity ZJAS_I_TRAVEL
       CurrencyCode,
       Description,
       OverallStatus,
-      
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true   
       LocalLastChangedAt,
 
       /* Associations */
       _Agency,
-      _Booking,
+      _Booking : redirected to composition child ZJAS_I_BOOKING,
       _Currency,
       _Customer,
       _OverallStatus

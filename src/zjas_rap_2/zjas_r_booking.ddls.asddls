@@ -17,7 +17,7 @@ define view entity ZJAS_R_BOOKING
   association [1..1] to /DMO/I_Connection             as _Connection        on  $projection.AirlineID    = _Connection.AirlineID
                                                                             and $projection.ConnectionID = _Connection.ConnectionID
   association [1..1] to /DMO/I_Booking_Status_VH      as _BookingStatus     on  $projection.BookingStatus = _BookingStatus.BookingStatus
-  association [0..1] to /DMO/I_Booking_Status_VH_Text as _BookingStatusText on  $projection.BookingStatus = _BookingStatusText.BookingStatus
+  //association [1..*] to /DMO/I_Booking_Status_VH_Text as _BookingStatusText on  $projection.BookingStatus = _BookingStatusText.BookingStatus
 {
   key booking_uuid            as BookingUUID,
       parent_uuid             as TravelUUID,
@@ -32,7 +32,7 @@ define view entity ZJAS_R_BOOKING
       flight_price            as FlightPrice,
       currency_code           as CurrencyCode,
       booking_status          as BookingStatus,
-      _BookingStatusText.Text as BookingStatusText,
+      //_BookingStatusText.Text as BookingStatusText,
 
       //local ETag field - OData ETag
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
