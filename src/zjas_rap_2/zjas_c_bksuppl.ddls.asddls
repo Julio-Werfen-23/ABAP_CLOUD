@@ -45,5 +45,5 @@ define view entity ZJAS_C_BKSUPPL
       _Booking : redirected to parent ZJAS_C_BOOKING,
       _Product,
       _SupplementText,
-      _Travel  : redirected to ZJAS_C_TRAVEL
+      _Travel : redirected to ZJAS_C_TRAVEL
 }

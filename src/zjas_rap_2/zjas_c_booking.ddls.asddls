@@ -10,14 +10,11 @@ define view entity ZJAS_C_BOOKING
 {
   key BookingUUID,
       TravelUUID,
+      
       @Search.defaultSearchElement: true
-      @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Booking_D',
-                                                     element: 'BookingID'},
-                                                     //Para obligar a elegir un codigo de la lista de la ayuda de busqueda
-                                                     useForValidation: true
-                                                     }]
       BookingID,
       BookingDate,
+      
       @Search.defaultSearchElement: true
       @ObjectModel.text.element: [ 'CustomerName' ]
       @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Customer_StdVH',
@@ -36,7 +33,7 @@ define view entity ZJAS_C_BOOKING
                                                                            element: 'CurrencyCode',
                                                                            usage: #RESULT },
                                                                          { localElement: 'FlightPrice',
-                                                                           element: 'FlightPrice',
+                                                                           element: 'Price',
                                                                            usage: #RESULT }],
                                                       useForValidation: true
                                                      }]
@@ -54,7 +51,7 @@ define view entity ZJAS_C_BOOKING
                                                                            element: 'AirlineID',
                                                                            usage: #FILTER_AND_RESULT },
                                                                          { localElement: 'FlightPrice',
-                                                                           element: 'FlightPrice',
+                                                                           element: 'Price',
                                                                            usage: #RESULT },
                                                                          { localElement: 'CurrencyCode',
                                                                            element: 'CurrencyCode',
@@ -71,10 +68,10 @@ define view entity ZJAS_C_BOOKING
                                                                            element: 'AirlineID',
                                                                            usage: #FILTER_AND_RESULT },
                                                                          { localElement: 'ConnectionID',
-                                                                           element: 'ConecctionID',
+                                                                           element: 'ConnectionID',
                                                                            usage: #FILTER_AND_RESULT },
                                                                          { localElement: 'FlightPrice',
-                                                                           element: 'FlightPrice',
+                                                                           element: 'Price',
                                                                            usage: #RESULT },
                                                                          { localElement: 'CurrencyCode',
                                                                            element: 'CurrencyCode',
@@ -90,7 +87,7 @@ define view entity ZJAS_C_BOOKING
                                                                            element: 'AirlineID',
                                                                            usage: #FILTER_AND_RESULT },
                                                                          { localElement: 'ConnectionID',
-                                                                           element: 'ConecctionID',
+                                                                           element: 'ConnectionID',
                                                                            usage: #FILTER_AND_RESULT },
                                                                          { localElement: 'FlightDate',
                                                                            element: 'FlightDate',

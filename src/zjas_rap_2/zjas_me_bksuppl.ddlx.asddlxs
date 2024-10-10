@@ -23,7 +23,7 @@ annotate entity ZJAS_C_BKSUPPL
   }
   
   @UI.hidden: true
-  bookingsuppluuid;
+  BooksupplUUID;
   @UI.hidden: true
   TravelUUID;
   @UI.hidden: true

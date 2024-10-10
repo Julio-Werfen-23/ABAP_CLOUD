@@ -29,7 +29,7 @@ define root view entity ZJAS_R_TRAVEL
       currency_code                                      as CurrencyCode,
       description                                        as Description,
       overall_status                                     as OverallStatus,
-      concat_with_space( description, overall_status, 2) as NewElement,
+//      concat_with_space( description, overall_status, 2) as NewElement,
 
       @Semantics.user.createdBy: true
       local_created_by                                   as LocalCreatedBy,

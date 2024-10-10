@@ -58,13 +58,15 @@ define root view entity ZJAS_C_TRAVEL
       OverallStatus,
       _OverallStatus._Text.Text as OverallStatusText : localized,
       
-      NewElement,
+//      NewElement,
       
 //      LocalCreatedBy,
 //      LocalCreatedAt, 
 //      LocalLastChangedBy,
 //      LastChangedAt,
-
+      @Semantics.systemDateTime.createdAt: true
+      LocalCreatedAt,
+      
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       LocalLastChangedAt,
 

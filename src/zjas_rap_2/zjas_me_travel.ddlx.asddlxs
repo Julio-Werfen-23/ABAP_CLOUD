@@ -1,35 +1,24 @@
 @Metadata.layer: #CORE
-@UI: {headerInfo: {
-        typeName: 'Travel',
-        typeNamePlural: 'Travels',
-    //    imageUrl: 'Imagen',
-        title: {
-            type: #STANDARD,
-            value: 'TravelID'
-        }},
+@UI: { headerInfo: { typeName: 'Travel',
+                     typeNamePlural: 'Travels',
+                     title: { type: #STANDARD,
+                              value: 'TravelID' }},
         presentationVariant: [{ sortOrder: [{ by: 'TravelID',
                                               direction: #DESC }],
                                  visualizations: [{ type: #AS_LINEITEM }] }] }
 annotate entity ZJAS_C_TRAVEL with
-{
-  @UI: {
-      facet : [
-               { id: 'Travel',
-                 purpose: #STANDARD,
-                 label : 'Travel',
-                 type: #IDENTIFICATION_REFERENCE,
-                 position: 10},
-
-                { id: 'Booking',
-                  purpose: #STANDARD,
-                  parentId: 'Travel',
-                  label : 'Booking',
-                  type: #LINEITEM_REFERENCE,
-                  targetElement: '_Booking',
-                  position: 20}
-              ]
-  }
-
+{             
+  @UI.facet: [{ id: 'Travel',
+                purpose: #STANDARD,
+                label: 'Travel',
+                type: #IDENTIFICATION_REFERENCE,
+                position: 10 },
+              { id: 'Booking',
+                purpose: #STANDARD,
+                label: 'Booking',
+                type: #LINEITEM_REFERENCE,
+                position: 20,
+                targetElement: '_Booking' }]
   @UI.hidden: true
   TravelUUID;
 
@@ -61,68 +50,51 @@ annotate entity ZJAS_C_TRAVEL with
                            dataAction: 'deductDiscount',
                            label: 'Discount',
                            position: 30 }],
-         selectionField: [{ position: 10 }]
-       }
-
+         selectionField: [{ position: 10 }] }
   TravelID;
-
+  
   @UI: { lineItem: [{ position: 20,
                       importance: #HIGH }],
-         identification: [{ position: 20,
-                            label: 'Agency ID' }],
-         selectionField: [{ position: 20 }]
-  }
+         identification: [{ position: 20 }],
+         selectionField: [{ position: 20 }] }
   AgencyID;
-
+ 
   @UI: { lineItem: [{ position: 30,
-                      importance: #HIGH }],
-         identification: [{ position: 30,
-                            label: 'Customer ID' }],
-         selectionField: [{ position: 30 }]
-  }
+                    importance: #HIGH }],
+       identification: [{ position: 30 }],
+       selectionField: [{ position: 30 }] }
   CustomerID;
-
+ 
   @UI: { lineItem: [{ position: 40,
                       importance: #MEDIUM }],
-         identification: [{ position: 40,
-                            label: 'Begin Date' }]
-  }
+         identification: [{ position: 40 }]}
   BeginDate;
-
+ 
   @UI: { lineItem: [{ position: 50,
                       importance: #MEDIUM }],
-         identification: [{ position: 50,
-                            label: 'End Date' }]
-  }
+           identification: [{ position: 50 }]}
   EndDate;
-
+ 
   @UI: { lineItem: [{ position: 60,
                       importance: #MEDIUM }],
-         identification: [{ position: 60,
-                            label: 'Booking Fee' }]
-  }
+         identification: [{ position: 60 }]}
   BookingFee;
-
+ 
   @UI: { lineItem: [{ position: 70,
                       importance: #MEDIUM }],
-         identification: [{ position: 70,
-                            label: 'Total Price' }]
-  }
+             identification: [{ position: 70 }]}
   TotalPrice;
-
+ 
   @UI: { lineItem: [{ position: 80,
                       importance: #MEDIUM }],
-         identification: [{ position: 80,
-                            label: 'Description' }]
-  }
+             identification: [{ position: 80 }]}
   Description;
-
+ 
   @UI: { lineItem: [{ position: 90,
-                importance: #HIGH }],
+                      importance: #HIGH }],
          identification: [{ position: 90,
-                      label: 'Status' }],
+                            label: 'Status' }],
          selectionField: [{ position: 40 }],
-         textArrangement: #TEXT_ONLY
-  }
+         textArrangement: #TEXT_ONLY }
   OverallStatus;
 }
