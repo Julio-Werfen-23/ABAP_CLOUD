@@ -27,7 +27,7 @@ etag master LocalLastChangedAt
   LocalLastChangedAt,
   LocalLastChangedBy;
 
-  field ( readonly ) CustomerID, AgencyID, BeginDate, EndDate, CurrencyCode;
+  field ( mandatory ) CustomerID, AgencyID, BeginDate, EndDate, CurrencyCode;
 
   field ( features : instance ) BookingFee;
 

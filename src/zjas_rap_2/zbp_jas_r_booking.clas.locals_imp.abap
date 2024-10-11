@@ -48,6 +48,45 @@ CLASS lhc_Booking IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD setBookingNumber.
+
+    DATA max_booking_id TYPE /dmo/booking_id.
+    DATA bookings_update TYPE TABLE FOR UPDATE zjas_r_travel\\Booking.
+
+    READ ENTITIES OF zjas_r_travel IN LOCAL MODE
+            ENTITY Booking BY \_Travel
+            FIELDS ( TravelUUID )
+            WITH CORRESPONDING #( keys )
+            RESULT DATA(travels).
+
+    LOOP AT travels INTO DATA(travel).
+
+      READ ENTITIES OF zjas_r_travel IN LOCAL MODE
+            ENTITY Travel BY \_Booking
+            FIELDS ( BookingID )
+            WITH VALUE #( ( %tky = travel-%tky ) )
+            RESULT DATA(bookings).
+
+      max_booking_id = '0000'.
+
+      LOOP AT bookings INTO DATA(booking).
+        IF booking-BookingID > max_booking_id.
+          max_booking_id = booking-BookingID.
+        ENDIF.
+      ENDLOOP.
+
+      LOOP AT bookings INTO booking WHERE BookingID IS INITIAL.
+        max_booking_id += 1.
+
+        APPEND VALUE #( %tky = booking-%tky
+                        BookingID = max_booking_id ) TO bookings_update.
+      ENDLOOP.
+
+      MODIFY ENTITIES OF zjas_r_travel IN LOCAL MODE
+                ENTITY Booking
+                UPDATE FIELDS ( BookingID )
+                WITH bookings_update.
+    ENDLOOP.
+
   ENDMETHOD.
 
   METHOD validateConnection.

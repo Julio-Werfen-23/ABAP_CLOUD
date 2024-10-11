@@ -15,8 +15,8 @@ define root view entity ZJAS_C_TRAVEL
       TravelID,
 
       @Search.defaultSearchElement: true
-//      @Consumption.valueHelpDefinition.entity.name: '/DMO/I_Agency_StdVH'
-//      @Consumption.valueHelpDefinition.entity.element: 'AgencyID'
+      //      @Consumption.valueHelpDefinition.entity.name: '/DMO/I_Agency_StdVH'
+      //      @Consumption.valueHelpDefinition.entity.element: 'AgencyID'
       @ObjectModel.text.element: [ 'AgencyName' ]
       @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Agency_StdVH',
                                                      //Este "AgencyID" es el de la ayuda de busqueda
@@ -25,17 +25,17 @@ define root view entity ZJAS_C_TRAVEL
                                                      useForValidation: true
                                                      }]
       AgencyID,
-      _Agency.Name       as AgencyName,
+      _Agency.Name              as AgencyName,
 
       @Search.defaultSearchElement: true
       @ObjectModel.text.element: [ 'CustomerName' ]
       @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Customer_StdVH',
-                                                     element: 'CustomerID'},
+                                                     element: 'CustomerID'}
                                                      //Para obligar a elegir un codigo de la lista de la ayuda de busqueda
-                                                     useForValidation: true
+                                                     //,useForValidation: true
                                                      }]
       CustomerID,
-      _Customer.LastName as CustomerName,
+      _Customer.LastName        as CustomerName,
 
       BeginDate,
       EndDate,
@@ -45,6 +45,7 @@ define root view entity ZJAS_C_TRAVEL
       @Semantics.amount.currencyCode: 'CurrencyCode'
       TotalPrice,
 
+
       @Consumption.valueHelpDefinition: [{ entity: { name: 'I_CurrencyStdVH',
                                                      //Este "AgencyID" es el de aqui, NO el de la ayuda de busqueda
                                                      element: 'Currency'},
@@ -52,25 +53,31 @@ define root view entity ZJAS_C_TRAVEL
                                                      useForValidation: true
                                                      }]
       CurrencyCode,
-      
+
       Description,
-      
+
+      @ObjectModel.text.element: [ 'OverallStatusText' ]
+      @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Overall_Status_VH',
+                                               element: 'OverallStatus'},
+                                               //Para obligar a elegir un codigo de la lista de la ayuda de busqueda
+                                               useForValidation: true
+                                               }]
       OverallStatus,
       _OverallStatus._Text.Text as OverallStatusText : localized,
-      
-//      NewElement,
-      
-//      LocalCreatedBy,
-//      LocalCreatedAt, 
-//      LocalLastChangedBy,
-//      LastChangedAt,
+
+      //      NewElement,
+
+      //      LocalCreatedBy,
+      //      LocalCreatedAt,
+      //      LocalLastChangedBy,
+      //      LastChangedAt,
       @Semantics.systemDateTime.createdAt: true
       LocalCreatedAt,
-      
+
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       LocalLastChangedAt,
 
-      
+
       /* Associations */
       _Agency,
       _Booking : redirected to composition child ZJAS_C_BOOKING,
